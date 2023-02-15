@@ -43,7 +43,7 @@ const NavBar = () => {
   const primaryMain = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
 
-  const fullName = `John Apetit`
+  const fullName = `John Apetit`;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -106,9 +106,9 @@ const NavBar = () => {
               "&:hover": { color: primaryMain, cursor: "pointer" },
             }}
           />
-          <FormControl variant="standard" value="John Apetit" >
+          <FormControl variant="standard" value="John Apetit">
             <Select
-            value={fullName}
+              value={fullName}
               sx={{
                 backgroundColor: neutralLight,
                 width: "150px",
@@ -119,8 +119,8 @@ const NavBar = () => {
                   width: "3rem",
                 },
                 "& .MuiSelect-select:focus": {
-                  backgroundColor: neutralLight
-                }
+                  backgroundColor: neutralLight,
+                },
               }}
               input={<InputBase />}
             >
@@ -141,22 +141,87 @@ const NavBar = () => {
 
       {/* MOBILE NAV */}
       {!isNonMobileScreens && isMobileMenuToggled && (
-        <Box 
-        position="fixed"
-        right="0"
-        bottom ="0"
-        height = "100%"
-        zIndex = "10"
-        maxWidth = "500px"
-        minWidth = "300px"
-        backgroundColor={background}
+        <Box
+          position="fixed"
+          right="0"
+          bottom="0"
+          height="100%"
+          zIndex="10"
+          maxWidth="500px"
+          minWidth="300px"
+          backgroundColor={background}
         >
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
-            <IconButton onClick={()=>setIsMobileMenuToggled(!isMobileMenuToggled)}>
+            <IconButton
+              onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
+            >
               <Close />
             </IconButton>
           </Box>
+
+          {/* MENU ITEMS */}
+          <FlexBetween
+            gap="3rem"
+            flexDirection={"column"}
+            justifyContent={"center"}
+            alignItems="center"
+          >
+            <IconButton
+              onClick={() => dispatch(setMode())}
+              sx={{ fontSize: "25px" }}
+            >
+              {theme.palette.mode === "dark" ? (
+                <DarkMode sx={{ fontSize: "25px" }} />
+              ) : (
+                <LightMode sx={{ color: "dark", fontSize: "25px" }} />
+              )}
+            </IconButton>
+            <Message
+              sx={{
+                fontSize: "25px",
+                "&:hover": { color: primaryMain, cursor: "pointer" },
+              }}
+            />
+            <Notifications
+              sx={{
+                fontSize: "25px",
+                "&:hover": { color: primaryMain, cursor: "pointer" },
+              }}
+            />
+            <Help
+              sx={{
+                fontSize: "25px",
+                "&:hover": { color: primaryMain, cursor: "pointer" },
+              }}
+            />
+            <FormControl variant="standard" value="John Apetit">
+              <Select
+                value={fullName}
+                sx={{
+                  backgroundColor: neutralLight,
+                  width: "150px",
+                  borderRadius: "0.25rem",
+                  p: "0.25rem 1rem",
+                  "& .MuiSvgIcon-root": {
+                    pr: "0.25rem",
+                    width: "3rem",
+                  },
+                  "& .MuiSelect-select:focus": {
+                    backgroundColor: neutralLight,
+                  },
+                }}
+                input={<InputBase />}
+              >
+                <MenuItem value={"John Apetit"}>
+                  <Typography>{"John Apetit"}</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => dispatch(setLogout())}>
+                  Log Out
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </FlexBetween>
         </Box>
       )}
     </FlexBetween>
