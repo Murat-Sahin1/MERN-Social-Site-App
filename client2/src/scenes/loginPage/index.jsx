@@ -46,7 +46,7 @@ const LoginPage = () => {
           textAlign="center"
           borderRadius={"1.5rem"}
         >
-          <Typography fontWeight={"500"} variant="h5" sx={{ mb: "1.rem" }}>
+          <Typography fontWeight={"500"} variant="h5" sx={{ mb: "1rem" }}>
             Welcome to Socialsite, the new kind of social media.
           </Typography>
           <Form />
