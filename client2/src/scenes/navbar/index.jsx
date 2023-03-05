@@ -43,7 +43,7 @@ const NavBar = () => {
   const primaryMain = theme.palette.primary.main;
   const alt = theme.palette.background.alt;
 
-  const fullName = `John Apetit`;
+  const fullName = user.firstName + " " + user.lastName;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -106,7 +106,7 @@ const NavBar = () => {
               "&:hover": { color: primaryMain, cursor: "pointer" },
             }}
           />
-          <FormControl variant="standard" value="John Apetit">
+          <FormControl variant="standard" value={fullName}>
             <Select
               value={fullName}
               sx={{
@@ -124,8 +124,8 @@ const NavBar = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem value={"John Apetit"}>
-                <Typography>{"John Apetit"}</Typography>
+              <MenuItem value={fullName}>
+                <Typography>{fullName}</Typography>
               </MenuItem>
               <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
             </Select>
@@ -195,7 +195,7 @@ const NavBar = () => {
                 "&:hover": { color: primaryMain, cursor: "pointer" },
               }}
             />
-            <FormControl variant="standard" value="John Apetit">
+            <FormControl variant="standard" value={fullName}>
               <Select
                 value={fullName}
                 sx={{
@@ -213,10 +213,15 @@ const NavBar = () => {
                 }}
                 input={<InputBase />}
               >
-                <MenuItem value={"John Apetit"}>
-                  <Typography>{"John Apetit"}</Typography>
+                <MenuItem value={fullName}>
+                  <Typography>{fullName}</Typography>
                 </MenuItem>
-                <MenuItem onClick={() => dispatch(setLogout())}>
+                <MenuItem
+                  onClick={() => {
+                    navigate("/");
+                    dispatch(setLogout());
+                  }}
+                >
                   Log Out
                 </MenuItem>
               </Select>
