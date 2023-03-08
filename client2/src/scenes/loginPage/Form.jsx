@@ -236,10 +236,11 @@ const Form = () => {
           <Box mb="15px">
             <Button
               type="submit"
+              display="flex"
               sx={{
                 m: "2rem 0",
                 p: "1rem",
-                width: "25rem",
+                width: "65%",
                 backgroundColor: palette.primary.main,
                 color: palette.background.alt,
                 "&:hover": { color: palette.primary.main },

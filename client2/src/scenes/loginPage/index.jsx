@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import FlexBetween from "components/FlexBetween";
 import Form from "./Form";
 
 const LoginPage = () => {
@@ -51,12 +52,14 @@ const LoginPage = () => {
           <Form />
         </Box>
         {isNonMobileScreens && (
-          <Box
-            backgroundColor={"red"}
-            height={isNonMobileScreens ? "30rem" : ""}
-            width={isNonMobileScreens ? "20%" : ""}
-            margin={isNonMobileScreens ? "2rem" : ""}
-          ></Box>
+          
+            <img
+              src="../assets/login.png"
+              width={"500px"}
+              height={"500px"}
+              style={{ objectFit: "cover" }}
+            ></img>
+          
         )}
       </Box>
     </Box>

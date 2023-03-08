@@ -22,6 +22,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const dark = palette.neutral.dark;
   const medium = palette.neutral.medium;
   const main = palette.neutral.main;
+  const primaryLight = palette.primary.light;
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -53,16 +54,13 @@ const UserWidget = ({ userId, picturePath }) => {
   return (
     <WidgetWrapper>
       {/* FIRST-ROW */}
-      <FlexBetween
-        gap="0.5rem"
-        pb="1.1rem"
-        onClick={() => navigate(`/profile/${userId}`)}
-      >
+      <FlexBetween gap="0.5rem" pb="1.1rem">
         <FlexBetween gap="1rem">
-          <UserImage image={picturePath} />
+          <UserImage image={picturePath} userId={userId} />
           <Box>
             <Typography
               variant="h4"
+              onClick={() => navigate(`/profile/${userId}`)}
               color={dark}
               fontWeight="500"
               sx={{
@@ -77,7 +75,9 @@ const UserWidget = ({ userId, picturePath }) => {
             <Typography color={medium}>{friends.length} friends</Typography>
           </Box>
         </FlexBetween>
-        <ManageAccountsOutlined />
+        <ManageAccountsOutlined
+          sx={{ "&:hover": { cursor: "pointer", color: palette.primary.main } }}
+        />
       </FlexBetween>
 
       <Divider />
@@ -133,7 +133,11 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={medium}>SocialNetwork</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined />
+          <EditOutlined
+            sx={{
+              "&:hover": { cursor: "pointer", color: palette.primary.main },
+            }}
+          />
         </FlexBetween>
 
         <FlexBetween gap="1rem" mb="0.5rem">
@@ -146,7 +150,11 @@ const UserWidget = ({ userId, picturePath }) => {
               <Typography color={medium}>Network Platform</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined />
+          <EditOutlined
+            sx={{
+              "&:hover": { cursor: "pointer", color: palette.primary.main },
+            }}
+          />
         </FlexBetween>
       </Box>
     </WidgetWrapper>

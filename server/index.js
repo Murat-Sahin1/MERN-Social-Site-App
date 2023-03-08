@@ -69,8 +69,8 @@ mongoose.connect(process.env.MONGO_URL, { // connecting the actual database from
 
     /* ADD DATA ONLY ONE TIME */
     /* IT IS ALREADY INSERTED */
-    /* 
+    
     User.inserMany(users);
     Post.insertMany(posts);
-    */
+    
 }).catch((error) => console.log(`${error} did not connect`))
