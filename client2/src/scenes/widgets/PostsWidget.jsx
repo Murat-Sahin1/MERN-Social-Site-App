@@ -11,11 +11,9 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const getPosts = async () => {
     const response = await fetch("http://localhost:3001/posts", {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     });
-    const data = response.json();
+    const data = await response.json();
     dispatch(setPosts({ posts: data }));
   };
 
@@ -24,9 +22,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       `http://localhost:3001/posts/${userId}/posts`,
       {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     const data = await response.json();
@@ -34,8 +30,13 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   };
 
   useEffect(() => {
-    isProfile ? getUserPosts() : getPosts();
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps
+    console.log("useEffect called");
+    if(isProfile){
+        getUserPosts();
+    } else {
+        getPosts();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
