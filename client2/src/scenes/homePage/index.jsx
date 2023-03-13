@@ -4,6 +4,8 @@ import { Box, useMediaQuery } from "@mui/material";
 import UserWidget from "scenes/widgets/UserWidget";
 import MyPostWidget from "scenes/widgets/MyPostWidget";
 import PostsWidget from "scenes/widgets/PostsWidget";
+import FriendsListWidget from "scenes/widgets/FriendsListWidget";
+import AdvertWidget from "scenes/widgets/AdvertWidget";
 
 const HomePage = () => {
   const { _id, picturePath } = useSelector((state) => state.user);
@@ -33,7 +35,13 @@ const HomePage = () => {
           <PostsWidget userId={_id} />
         </Box>
         {/* FRIENDS-LIST */}
-        {isNonMobileScreens && <Box flexBasis="26%"></Box>}
+        {isNonMobileScreens && (
+          <Box flexBasis="26%">
+            <AdvertWidget />
+            <Box m="2rem 0 " />
+            <FriendsListWidget userId={_id} />
+          </Box>
+        )}
       </Box>
     </Box>
   );
